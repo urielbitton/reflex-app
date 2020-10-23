@@ -26,6 +26,7 @@ function Sidebar() {
           <h6><i className="fal fa-tachometer-alt"></i>Home</h6>
           <h6><i className="fal fa-users-class"></i>My Courses</h6>
           <h6><i className="fas fa-tasks"></i>Tasks</h6>
+          <h6><i class="fal fa-code-branch"></i>Projects</h6>
           <h6><i className="fal fa-badge-check"></i>Grades</h6>
           <h6><i className="fal fa-toolbox"></i>Resources</h6>
           <h6><i className="fal fa-sliders-v"></i>Settings</h6>

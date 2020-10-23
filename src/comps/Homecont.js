@@ -3,6 +3,7 @@ import { BrowserRouter as Router,Switch,Route,Link, useHistory } from "react-rou
 import Home from './Home'
 import MyCourses from './MyCourses'
 import Tasks from './Tasks'
+import Projects from './Projects'
 import Grades from './Grades'
 import Resources from './Resources'
 import Settings from './Settings'
@@ -22,6 +23,9 @@ function Homecont() {
           </Route>
           <Route path="/mycourses">
             <MyCourses />
+          </Route>
+          <Route path="/projects">
+            <Projects />
           </Route>
           <Route path="/grades">
             <Grades />

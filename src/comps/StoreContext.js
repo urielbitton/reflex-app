@@ -19,7 +19,7 @@ const StoreContextProvider = (props) => {
   const [notifs, setNotifs] = useState([
 
   ])
-  
+
 
 
 
