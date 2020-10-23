@@ -2,12 +2,16 @@ html, body {
   margin: 0;
   padding: 0;
   scroll-behavior: smooth;
-  font-family: sans-serif;
+  font-family: Alata, sans-serif;
 }
 
 :root {
   --color: #6633ff;
-}
+  --orange: #ffcc33;
+  --red: #ff3399;
+  --green: #99ff33;
+  --txt: #333d49;
+} 
 
 .left {
   float: left;
@@ -27,9 +31,12 @@ html, body {
 .spacerl {
   height: 100px;
 } 
+.spacern {
+  height: 125px;
+}
 * {
   box-sizing: border-box;
-  letter-spacing: 0.3px;
+  letter-spacing: 0.2px;
 }
 h1,h2,h3,h4,h5,h6,i,p,li,button,a,span,small,img,section,input,label {
   position: relative;
@@ -44,9 +51,21 @@ button {
   cursor: pointer;
   border: none;
   transition: all 0.2s;
+  border-radius: 5px;
+  padding: 15px 25px;
+  background: var(--color);
+  color: #fff;
+}
+button:hover {
+  filter: brightness(110%)
 }
 button i {
   margin-right: 10px;
+}
+input {
+  border: none;
+  padding: 15px;
+  border-radius: 10px;
 }
 a {
   text-decoration: none;
@@ -55,32 +74,436 @@ a {
 input, textarea, select {
   outline: none;
 }
+input::placeholder {
+  color: #bbb;
+}
 hr {
   border: none;
 }
 
 .appcontainer {
   display: grid;
-  grid-template-columns: repeat(12, 1fr)
-}
-.sidebar {
-  grid-column: span 2;
-  background: #fff;
-  position: relative;
-  padding: 30px;
-  border-radius: 0 10px 10px 0;
-  height: 100vh;
-  display: flex;
-  justify-content: space-around;
+  grid-template-columns: 280px auto;
 }
 .homecont {
   position: relative;
-  grid-column: span 10;
   background: #f8f9fb;
-  padding: 30px;
+  padding: 30px 40px;
+  height: 100vh;
+  overflow: hidden;
+}
+.innerhomecont {
+  position: relative;
+  height: 100%;
+  overflow-y: scroll;
+}
+.innerhomecont::-webkit-scrollbar {
+  display: none;
 }
 
- 
+.sidebar {
+  background: #fff;
+  position: relative;
+  padding: 30px;
+  border-radius: 0 20px 20px 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.sidebar h3 {
+  font-size: 24px;
+  text-align: center;
+  color: var(--color);
+} 
+.sidebar h3 i {
+  margin-right: 10px;
+}
+.innersidebar {
+  position: relative;
+  height: 500px;
+  overflow-y: scroll;
+}
+.innersidebar::-webkit-scrollbar {
+  display: none;
+}
+.sidemenu h6 {
+  margin: 5px 0;
+  font-size: 16px;
+  color: #aaa;
+  font-weight: 500;
+  padding: 10px 0;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.sidemenu h6:hover {
+  color: var(--color);
+}
+.sidemenu h6 i {
+  margin-right: 15px;
+}
+.sidebar button {
+  box-shadow: 0px 13px 32px -14px rgba(102,51,255,1);
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  transform: translateX(-40px);
+  padding: 30px 40px;
+  width: calc(100% - 282px);
+  background: #f8f9fb; 
+  display: grid;
+  grid-template-columns: auto 400px;
+  grid-gap: 50px;
+  z-index: 900;
+}  
+nav .navsearchdiv {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+nav .navsearchdiv label {
+  width: 100%;
+}
+nav .navsearchdiv label i {
+  position: absolute;
+  z-index: 10;
+  color: #bbb;
+  top: 19px;
+  left: 15px;
+}
+nav .navsearchdiv input {
+  width: 100%;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+  padding: 20px 15px;
+  padding-left: 40px;
+}
+nav .accountdiv {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+nav .accountdiv small {
+  position: absolute;
+  top: 7px;
+  left: 15px;
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+  background: var(--color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 11px;
+  color: #fff;
+}
+nav .notifcont i {
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+nav .notifcont i:hover {
+  color: var(--color)
+}
+.profcont {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.profcont img {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  margin-right: 10px;
+}
+.profcont h6 {
+  font-size: 14px;
+  color: #777;
+}
+.profcont h6 i {
+  margin-left: 10px;
+  top: 1px;
+}
+
+
+.homepage {
+  display: grid;
+  grid-template-columns: auto 400px;
+  grid-gap: 50px;
+}
+.homegrid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-gap: 20px;
+}
+.dashbox {
+  position: relative;
+  border-radius: 10px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.04);
+  background: #fff;
+  padding: 20px;
+}
+.dashbox h4 {
+  color: var(--txt);
+} 
+.maindashbox {
+  grid-column: span 5;
+  background: rgba(255, 204, 51,0.3);
+}
+.maindashbox canvas {
+  max-height: 200px;
+}
+.statusbox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  grid-column: span 3;
+  padding: 30px;
+}
+.statusbox img {
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  margin-bottom: 10px;
+}
+.statusbox h3 {
+  color: var(--txt);
+}
+.statusbox h6 {
+  color: #aaa;
+}
+.statusicons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  width: 100%;
+}
+.statusbox > div {
+  text-align: center;
+}
+.statusicons big {
+  font-size: 45px;
+  font-weight: 900;
+  color: var(--txt);
+}
+.statusicons big small {
+  display: block;
+  font-size: 11px;
+  font-weight: 100;
+  color: #777;
+}
+.statusicons big small i {
+  margin-right: 5px;
+}
+.progcircle {
+  width: 60px;
+  position: relative;
+  margin: auto;
+} 
+.circle-bg {
+  fill: none;
+  stroke: #ddd;
+  stroke-width: 4;
+}
+.circle {
+  fill: none;
+  stroke-width: 4; 
+  stroke-linecap: round;
+  stroke: var(--color)
+}
+.percentage {
+  fill: #999;
+  font-family: inherit;
+  text-anchor: middle;
+  position: relative;
+  font-size: 13px; 
+}
+#calendar .fc-toolbar-title {
+  font-size: 16px;
+}
+#calendar .fc-today-button {
+  background: none;
+  color: var(--txt);
+  border: none;
+}
+#calendar .fc-button-group button {
+  background: #eee;
+  border: none;
+  padding: 5px;
+  margin-left: 5px;
+  color: #bbb;
+  font-size: 13px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#calendar .fc-button-group button:hover {
+  background: #ddd
+}
+#calendar table, #calendar td, #calendar th {
+  border: none;
+}
+#calendar td {
+  font-size: 13px;
+  padding: 0;
+  transition: all 0.2s;
+}
+#calendar .fc-daygrid-day-frame {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#calendar .fc-daygrid-day-frame:hover {
+  background: #f1f1f1;
+  cursor: pointer;
+}
+#calendar th {
+  padding-bottom: 10px;
+}
+#calendar th a {
+  color: var(--orange);
+}
+#calendar ::-webkit-scrollbar {
+  display: none;
+} 
+#calendar .fc-header-toolbar {
+  width: 91%;
+  margin: auto;
+  margin-bottom: 30px;
+} 
+
+.tasksbox {
+  position: relative;
+  grid-column: span 4;
+  height: 660px;
+  overflow: hidden;
+}
+.innertasksbox {
+  position: relative;
+  margin-top: 20px;
+  height: 550px;
+  overflow-y: scroll;
+}
+.innertasksbox::-webkit-scrollbar {
+  display: none;
+}
+.taskrow {
+  position: relative;
+  padding: 15px;
+  background: #f5f5f5;
+  border-radius: 10px;
+  cursor: pointer;
+  margin: 20px auto;
+  transition: all 0.2s;
+}
+.taskrow:hover {
+  background: #f1f1f1;
+}
+.taskrow h6 {
+  font-size: 13px;
+  color: #111;
+  font-weight: 500;
+}
+.taskrow h6 .taskcircle {
+  width: 8px;
+  height: 8px;
+  border-radius: 100%;
+  display: inline-block;
+  margin-right: 7px;
+}
+.taskrow p {
+  font-size: 14px;
+  color: #999;
+  margin: 10px 0;
+  margin-top: 15px;
+  width: 90%;
+}
+.taskrow .taskflex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+}
+.taskrow .classcode {
+  position: relative;
+  width: 25px;
+  height: 25px;
+  border-radius: 100%;
+  font-size: 11px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+  color: #fff;
+}
+.taskrow small.coursenum {
+  font-size: 11px;
+  color: #aaa;
+}
+.taskrow small.taskdate {
+  font-size: 11px;
+  color: #aaa;
+}
+.tasksbox .seeall {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 13px;
+  color: var(--orange);
+  cursor: pointer;
+}
+.taskrow .classcode.orange, .taskrow .classcode.green {
+  color: #111;
+}
+.purple {
+  background: var(--color);
+}
+.orange {
+  background: var(--orange);
+}
+.red {
+  background: var(--red);
+}
+.green {
+  background: var(--green);
+  color: #111;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
